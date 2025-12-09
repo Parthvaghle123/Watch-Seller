@@ -33,6 +33,8 @@ import AdminRedirect from "./admin/AdminRedirect";
 
 // Bootstrap
 import "bootstrap/dist/css/bootstrap.min.css";
+import "@fortawesome/fontawesome-free/css/all.min.css";
+import "./css/global.css";
 
 const App = () => {
   const [username, setUsername] = useState("");

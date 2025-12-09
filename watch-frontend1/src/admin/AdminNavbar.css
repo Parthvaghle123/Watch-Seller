@@ -12,6 +12,11 @@
   color: #fff !important;
 }
 
+h3{
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-weight: 700 !important;
+  margin-top: 10px;
+}
 .admin-navbar .navbar-brand:hover {
   transform: scale(1.02); 
   color: #fff !important;
@@ -24,6 +29,8 @@
   transition: all 0.2s ease-in-out;
   margin: 0 0.25rem;
   color: rgba(255, 255, 255, 0.85) !important;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-weight: 700 !important;
 }
 
 .admin-navbar .nav-link:hover {

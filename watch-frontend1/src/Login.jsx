@@ -4,6 +4,9 @@ import axios from "axios";
 import RedirectLoader from "./RedirectLoader";
 import "./css/Login.css";
 import "bootstrap/dist/css/bootstrap.min.css";
+import "./css/global.css";
+
+
 
 const Login = ({ setUsername }) => {
   const [emailInput, setEmailInput] = useState("");
