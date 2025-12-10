@@ -64,7 +64,16 @@ const Item = () => {
 
   useEffect(() => {
     const query = new URLSearchParams(location.search).get("q")?.toLowerCase() || "";
-    const categoryMap = { premium: "Drinks", smart: "Food", luxury: "Gifts" };
+    const categoryMap = {
+      men: "Men",
+      women: "Women",
+      smart: "Smart Watch",
+      premium: "Premium Watch",
+      watches: "Watches",
+      brands: "International Brands",
+      gifting: "Gifting",
+      sale: "Sale",
+    };
     const categoryValue = activeCategory === "all" ? null : categoryMap[activeCategory];
 
     const base = categoryValue ? products.filter((p) => p.category === categoryValue) : products;
@@ -223,34 +232,15 @@ const Item = () => {
           <div className="mb-4 text-center">
             <h2 className="head mb-3 mt-4">Watches</h2>
             <div className="d-flex flex-wrap justify-content-center gap-2">
-              <button
-                type="button"
-                className={`btn btn-outline-dark ${activeCategory === "all" ? "active" : ""}`}
-                onClick={() => setActiveCategory("all")}
-              >
-                All
-              </button>
-              <button
-                type="button"
-                className={`btn btn-outline-dark ${activeCategory === "premium" ? "active" : ""}`}
-                onClick={() => setActiveCategory("premium")}
-              >
-                Premium Watches
-              </button>
-              <button
-                type="button"
-                className={`btn btn-outline-dark ${activeCategory === "smart" ? "active" : ""}`}
-                onClick={() => setActiveCategory("smart")}
-              >
-                Smart Watches
-              </button>
-              <button
-                type="button"
-                className={`btn btn-outline-dark ${activeCategory === "luxury" ? "active" : ""}`}
-                onClick={() => setActiveCategory("luxury")}
-              >
-                Luxury Watches
-              </button>
+              <button type="button" className={`btn btn-outline-dark ${activeCategory === "all" ? "active" : ""}`} onClick={() => setActiveCategory("all")}>All</button>
+              <button type="button" className={`btn btn-outline-dark ${activeCategory === "men" ? "active" : ""}`} onClick={() => setActiveCategory("men")}>Men</button>
+              <button type="button" className={`btn btn-outline-dark ${activeCategory === "women" ? "active" : ""}`} onClick={() => setActiveCategory("women")}>Women</button>
+              <button type="button" className={`btn btn-outline-dark ${activeCategory === "smart" ? "active" : ""}`} onClick={() => setActiveCategory("smart")}>Smart Watch</button>
+              <button type="button" className={`btn btn-outline-dark ${activeCategory === "premium" ? "active" : ""}`} onClick={() => setActiveCategory("premium")}>Premium Watch</button>
+              <button type="button" className={`btn btn-outline-dark ${activeCategory === "watches" ? "active" : ""}`} onClick={() => setActiveCategory("watches")}>Watches</button>
+              <button type="button" className={`btn btn-outline-dark ${activeCategory === "brands" ? "active" : ""}`} onClick={() => setActiveCategory("brands")}>International Brands</button>
+              <button type="button" className={`btn btn-outline-dark ${activeCategory === "gifting" ? "active" : ""}`} onClick={() => setActiveCategory("gifting")}>Gifting</button>
+              <button type="button" className={`btn btn-outline-dark ${activeCategory === "sale" ? "active" : ""}`} onClick={() => setActiveCategory("sale")}>Sale</button>
             </div>
           </div>
           {/* Loader */}

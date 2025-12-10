@@ -25,7 +25,7 @@ const Products = () => {
     price: "",
     image: "",
     images: ["", "", ""],
-    category: "Drinks",
+    category: "Watches",
     stock: "",
     featured: false,
     displayOnMenu: false,
@@ -115,7 +115,7 @@ const Products = () => {
       price: "",
       image: "",
       images: ["", "", ""],
-      category: "Drinks",
+      category: "Watches",
       stock: "",
       featured: false,
       displayOnMenu: false,
@@ -244,16 +244,7 @@ const Products = () => {
     }
   };
 
-  // Map category values to display names
-  const getCategoryDisplayName = (category) => {
-    const categoryMap = {
-      "Drinks": "Premium Watches",
-      "Food": "Smart Watches",
-      "Gifts": "Luxury Watches",
-      "Other": "Other"
-    };
-    return categoryMap[category] || category;
-  };
+  const getCategoryDisplayName = (category) => category;
 
   const openEditModal = (product) => {
     if (!product) {
@@ -271,7 +262,7 @@ const Products = () => {
       images: Array.isArray(product.images) && product.images.length
         ? [...product.images.slice(0, 3), ...Array(Math.max(0, 3 - product.images.length)).fill("")]
         : ["", "", ""],
-      category: product.category || "Other",
+      category: product.category || "Watches",
       stock: product.stock ? product.stock.toString() : "0",
       featured: !!product.featured,
       displayOnMenu: !!product.displayOnMenu,
@@ -350,9 +341,14 @@ const Products = () => {
               onChange={(e) => setCategoryFilter(e.target.value)}
             >
               <option value="All Categories">All Categories</option>
-              <option value="Drinks">Premium Watches</option>
-              <option value="Food">Smart Watches</option>
-              <option value="Gifts">Luxury Watches</option>
+              <option value="Men">Men</option>
+              <option value="Women">Women</option>
+              <option value="Smart Watch">Smart Watch</option>
+              <option value="Premium Watch">Premium Watch</option>
+              <option value="Watches">Watches</option>
+              <option value="International Brands">International Brands</option>
+              <option value="Gifting">Gifting</option>
+              <option value="Sale">Sale</option>
             </select>
           </div>
 
@@ -546,9 +542,14 @@ const Products = () => {
                           onChange={handleInputChange}
                           required
                         >
-                          <option value="Drinks">Premium Watches</option>
-                          <option value="Food">Smart Watches</option>
-                          <option value="Gifts">Luxury Watches</option>
+                          <option value="Men">Men</option>
+                          <option value="Women">Women</option>
+                          <option value="Smart Watch">Smart Watch</option>
+                          <option value="Premium Watch">Premium Watch</option>
+                          <option value="Watches">Watches</option>
+                          <option value="International Brands">International Brands</option>
+                          <option value="Gifting">Gifting</option>
+                          <option value="Sale">Sale</option>
                         </select>
                       </div>
                     </div>
@@ -740,10 +741,16 @@ const Products = () => {
                           onChange={handleInputChange}
                           required
                         >
-                          <option value="Drinks">Premium Watches</option>
-                          <option value="Food">Smart Watches</option>
-                          <option value="Gifts">Luxury Watches</option>
-                        </select>
+                          <option value="Men">Men</option>
+                          <option value="Women">Women</option>
+                          <option value="Smart Watch">Smart Watch</option>
+                          <option value="Premium Watch">Premium Watch</option>
+                          <option value="Watches">Watches</option>
+                          <option value="International Brands">International Brands</option>
+                          <option value="Gifting">Gifting</option>
+                          <option value="Sale">Sale</option>
+                        </select
+                        >
                       </div>
                     </div>
                     <div className="mb-3">

@@ -27,7 +27,16 @@ const productSchema = new mongoose.Schema({
   category: {
     type: String,
     required: true,
-    enum: ['Drinks', 'Food', 'Merchandise', 'Gifts', 'Other']
+    enum: [
+      'Men',
+      'Women',
+      'Smart Watch',
+      'Premium Watch',
+      'Watches',
+      'International Brands',
+      'Gifting',
+      'Sale'
+    ]
   },
   isAvailable: {
     type: Boolean,
