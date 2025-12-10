@@ -19,6 +19,7 @@ const Item = () => {
   const [showModal, setShowModal] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [activeImageIndex, setActiveImageIndex] = useState(0);
+  const [activeCategory, setActiveCategory] = useState("all");
 
   // 🔹 Fetch products with proper loading state management
   useEffect(() => {
@@ -28,7 +29,7 @@ const Item = () => {
         setLoading(true);
 
         const response = await axios.get(
-          "http://localhost:3001/api/products"
+          "http://localhost:3001/api/products?displayOnMenu=true"
         );
 
         // Set products immediately
@@ -61,23 +62,24 @@ const Item = () => {
     fetchProducts();
   }, []);
 
-  // Handle search filtering
   useEffect(() => {
-    const query =
-      new URLSearchParams(location.search).get("q")?.toLowerCase() || "";
+    const query = new URLSearchParams(location.search).get("q")?.toLowerCase() || "";
+    const categoryMap = { premium: "Drinks", smart: "Food", luxury: "Gifts" };
+    const categoryValue = activeCategory === "all" ? null : categoryMap[activeCategory];
+
+    const base = categoryValue ? products.filter((p) => p.category === categoryValue) : products;
+
     if (query) {
       setLoading(true);
       setTimeout(() => {
-        const filtered = products.filter((item) =>
-          item.name.toLowerCase().includes(query)
-        );
+        const filtered = base.filter((item) => item.name.toLowerCase().includes(query));
         setFilteredProducts(filtered);
         setLoading(false);
       }, 1000);
     } else {
-      setFilteredProducts(products);
+      setFilteredProducts(base);
     }
-  }, [location.search, products]);
+  }, [location.search, products, activeCategory]);
 
   const openProductModal = (product) => {
     setSelectedProduct(product);
@@ -218,6 +220,39 @@ const Item = () => {
 
       <div className="Herosection_1">
         <div className="container">
+          <div className="mb-4 text-center">
+            <h2 className="head mb-3 mt-4">Watches</h2>
+            <div className="d-flex flex-wrap justify-content-center gap-2">
+              <button
+                type="button"
+                className={`btn btn-outline-dark ${activeCategory === "all" ? "active" : ""}`}
+                onClick={() => setActiveCategory("all")}
+              >
+                All
+              </button>
+              <button
+                type="button"
+                className={`btn btn-outline-dark ${activeCategory === "premium" ? "active" : ""}`}
+                onClick={() => setActiveCategory("premium")}
+              >
+                Premium Watches
+              </button>
+              <button
+                type="button"
+                className={`btn btn-outline-dark ${activeCategory === "smart" ? "active" : ""}`}
+                onClick={() => setActiveCategory("smart")}
+              >
+                Smart Watches
+              </button>
+              <button
+                type="button"
+                className={`btn btn-outline-dark ${activeCategory === "luxury" ? "active" : ""}`}
+                onClick={() => setActiveCategory("luxury")}
+              >
+                Luxury Watches
+              </button>
+            </div>
+          </div>
           {/* Loader */}
           {loading ? (
             <div className="d-flex justify-content-center align-items-center my-5">
